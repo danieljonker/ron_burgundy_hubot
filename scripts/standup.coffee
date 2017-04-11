@@ -90,7 +90,7 @@ module.exports = (robot) ->
   # Fires the standup message.
 
   doStandup = (room) ->
-    message = PREPEND_MESSAGE + '@channel Standup time! Now! Go go go *' + _.sample(team_members) + '!*\n http://appear.in/sittingdownisoverrated \n'
+    message = PREPEND_MESSAGE + "#{_.sample(STANDUP_MESSAGES)}" + '*' + _.sample(team_members) + '*' + STANDUP_MESSAGE_SUFFIX
     # message = PREPEND_MESSAGE + '@channel Standup time! Now! Go go go *' + "@mo" + '!*\n http://appear.in/sittingdownisoverrated \n'
     robot.messageRoom room, message
     return
@@ -138,7 +138,7 @@ module.exports = (robot) ->
   'use strict'
   # Constants.
   STANDUP_MESSAGES = [
-    'NEWS TEAM ASSEMBlE https://www.youtube.com/watch?v=iXlskUxlI7E'
+    '*NEWS TEAM ASSEMBlE* https://www.youtube.com/watch?v=iXlskUxlI7E'
   ]
 
   STANDUP_MESSAGE_SUFFIX = "\n http://appear.in/sittingdownisoverrated"
