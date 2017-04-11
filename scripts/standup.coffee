@@ -31,7 +31,6 @@ module.exports = (robot) ->
   # to see if it should be fired.
   team_members = [
     "Jonker",
-    "Jamie",
     "Steve",
     "Jess",
     "Kavi",
@@ -39,7 +38,8 @@ module.exports = (robot) ->
     "Dan",
     "Khaleel",
     "James",
-    "Mo"
+    "Chris",
+    "Ryan"
   ]
 
   robot.respond /team member$/i, (msg) ->
@@ -138,11 +138,12 @@ module.exports = (robot) ->
   'use strict'
   # Constants.
   STANDUP_MESSAGES = [
-    '@channel Standup time! Now! Go go go!\n http://appear.in/sittingdownisoverrated'
+    'NEWS TEAM ASSEMBlE https://www.youtube.com/watch?v=iXlskUxlI7E'
   ]
-  PREPEND_MESSAGE = process.env.HUBOT_STANDUP_PREPEND or ''
-  if PREPEND_MESSAGE.length > 0 and PREPEND_MESSAGE.slice(-1) != ' '
-    PREPEND_MESSAGE += ' '
+
+  STANDUP_MESSAGE_SUFFIX = "\n http://appear.in/sittingdownisoverrated"
+
+  PREPEND_MESSAGE = '@channel '
   # Check for standups that need to be fired, once a minute
   # Monday to Friday.
   new cronJob('1 * * * * 1-5', checkStandups, null, true)
