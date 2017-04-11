@@ -90,7 +90,7 @@ module.exports = (robot) ->
   # Fires the standup message.
 
   doStandup = (room) ->
-    message = PREPEND_MESSAGE + "#{_.sample(STANDUP_MESSAGES)}" + '*' + _.sample(team_members) + '*' + STANDUP_MESSAGE_SUFFIX
+    message = PREPEND_MESSAGE + "#{_.sample(STANDUP_MESSAGES)}" + STANDUP_MESSAGE_SUFFIX
     # message = PREPEND_MESSAGE + '@channel Standup time! Now! Go go go *' + "@mo" + '!*\n http://appear.in/sittingdownisoverrated \n'
     robot.messageRoom room, message
     return
