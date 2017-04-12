@@ -5,6 +5,8 @@
 #   hubot notifications help - provides additional info for producing notifications
 #   hubot android random notification - produces a random notification targetting android devices.
 #   hubot android notification story_id notification_text - produces a notification for the provided story_id with custom notification_text (notification_text optional)
+#   hubot ios random notification - produces a random notification targetting ios devices.
+#   hubot ios notification story_id notification_text - produces a notification for the provided story_id with custom notification_text (notification_text optional)
 
 postData = JSON.stringify({
   'audience' : 'all',
