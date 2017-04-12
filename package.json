@@ -5,8 +5,10 @@
   "author": "danieljonker <daniel.l.jonker@gmail.com>",
   "description": "I'm kind of a big deal. People know me.",
   "dependencies": {
+    "cron": "~1.0.4",
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.1",
+    "hubot-env": "0.0.2",
     "hubot-google-images": "^0.2.6",
     "hubot-google-translate": "^0.2.0",
     "hubot-help": "^0.2.0",
@@ -18,7 +20,6 @@
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.0",
     "hubot-slack": "^4.3.4",
-    "cron": "~1.0.4",
     "underscore": "~1.8.3"
   },
   "engines": {
