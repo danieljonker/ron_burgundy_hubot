@@ -10,7 +10,7 @@
 
 iosPostData = JSON.stringify({
   'audience' : 'all',
-  'device_types' : ['android'],
+  'device_types' : ['ios'],
   'notification' : {
     'alert' : '<<title>>',
     'ios' : {
