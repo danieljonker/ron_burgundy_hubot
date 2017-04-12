@@ -34,6 +34,15 @@ androidPostData = JSON.stringify({
     }
   })
 
+noStoryPostData = JSON.stringify({
+  'audience' : 'all',
+  'device_types' : ['<<platform>>'],
+  'notification' : {
+    'alert' : '<<title>>',
+    }
+  })
+
+PLATFORM_VAR = '<<platform>>'
 TITLE_VAR = '<<title>>'
 ID_VAR = '<<story_id>>'
 STORY_IDS = [
@@ -65,6 +74,14 @@ module.exports = (robot) ->
     .post(androidPostData.split(ID_VAR).join(story_id).split(TITLE_VAR).join(title)) (err, res, body) ->
       msg.send "Sent"
 
+  robot.respond /android blank notification/i, (msg) ->
+    robot.http('https://go.urbanairship.com/api/push')
+    .header('Accept', 'application/vnd.urbanairship+json; version=3')
+    .header('Content-Type', 'application/x-www-form-urlencoded')
+    .header('Authorization', "Basic #{URBAN_AIRSHIP_AUTH}")
+    .post(noStoryPostData.split(PLATFORM_VAR).join('android').split(TITLE_VAR).join('this story has no id')) (err, res, body) ->
+      msg.send "Sent"
+
   robot.respond /ios random notification/i, (msg) ->
     story_deets = msg.random STORY_IDS
     robot.http('https://go.urbanairship.com/api/push')
@@ -83,6 +100,14 @@ module.exports = (robot) ->
     .header('Content-Type', 'application/x-www-form-urlencoded')
     .header('Authorization', "Basic #{URBAN_AIRSHIP_AUTH}")
     .post(iosPostData.split(ID_VAR).join(story_id).split(TITLE_VAR).join(title)) (err, res, body) ->
+      msg.send "Sent"
+
+  robot.respond /ios blank notification/i, (msg) ->
+    robot.http('https://go.urbanairship.com/api/push')
+    .header('Accept', 'application/vnd.urbanairship+json; version=3')
+    .header('Content-Type', 'application/x-www-form-urlencoded')
+    .header('Authorization', "Basic #{URBAN_AIRSHIP_AUTH}")
+    .post(noStoryPostData.split(PLATFORM_VAR).join('ios').split(TITLE_VAR).join('this story has no id')) (err, res, body) ->
       msg.send "Sent"
 
   robot.respond /notifications help/i, (msg) ->
