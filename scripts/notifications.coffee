@@ -8,7 +8,20 @@
 #   hubot ios random notification - produces a random notification targetting ios devices.
 #   hubot ios notification story_id notification_text - produces a notification for the provided story_id with custom notification_text (notification_text optional)
 
-postData = JSON.stringify({
+iosPostData = JSON.stringify({
+  'audience' : 'all',
+  'device_types' : ['android'],
+  'notification' : {
+    'alert' : '<<title>>',
+    'ios' : {
+      'extra' : {
+        'story_id' : '<<story_id>>'
+        }
+      }
+    }
+  })
+
+androidPostData = JSON.stringify({
   'audience' : 'all',
   'device_types' : ['android'],
   'notification' : {
@@ -38,7 +51,7 @@ module.exports = (robot) ->
     .header('Accept', 'application/vnd.urbanairship+json; version=3')
     .header('Content-Type', 'application/x-www-form-urlencoded')
     .header('Authorization', "Basic #{URBAN_AIRSHIP_AUTH}")
-    .post(postData.split(ID_VAR).join(story_deets[0]).split(TITLE_VAR).join(story_deets[1])) (err, res, body) ->
+    .post(androidPostData.split(ID_VAR).join(story_deets[0]).split(TITLE_VAR).join(story_deets[1])) (err, res, body) ->
       msg.send "Sent"
 
   robot.respond /android notification (.*)/i, (msg) ->
@@ -49,7 +62,27 @@ module.exports = (robot) ->
     .header('Accept', 'application/vnd.urbanairship+json; version=3')
     .header('Content-Type', 'application/x-www-form-urlencoded')
     .header('Authorization', "Basic #{URBAN_AIRSHIP_AUTH}")
-    .post(postData.split(ID_VAR).join(story_id).split(TITLE_VAR).join(title)) (err, res, body) ->
+    .post(androidPostData.split(ID_VAR).join(story_id).split(TITLE_VAR).join(title)) (err, res, body) ->
+      msg.send "Sent"
+
+  robot.respond /ios random notification/i, (msg) ->
+    story_deets = msg.random STORY_IDS
+    robot.http('https://go.urbanairship.com/api/push')
+    .header('Accept', 'application/vnd.urbanairship+json; version=3')
+    .header('Content-Type', 'application/x-www-form-urlencoded')
+    .header('Authorization', "Basic #{URBAN_AIRSHIP_AUTH}")
+    .post(iosPostData.split(ID_VAR).join(story_deets[0]).split(TITLE_VAR).join(story_deets[1])) (err, res, body) ->
+      msg.send "Sent"
+
+  robot.respond /ios notification (.*)/i, (msg) ->
+    data = msg.match[1].split(" ")
+    story_id = data[0]
+    title = if (data.length > 1) then data.slice(1).join(" ") else "Message"
+    robot.http('https://go.urbanairship.com/api/push')
+    .header('Accept', 'application/vnd.urbanairship+json; version=3')
+    .header('Content-Type', 'application/x-www-form-urlencoded')
+    .header('Authorization', "Basic #{URBAN_AIRSHIP_AUTH}")
+    .post(iosPostData.split(ID_VAR).join(story_id).split(TITLE_VAR).join(title)) (err, res, body) ->
       msg.send "Sent"
 
   robot.respond /notifications help/i, (msg) ->
