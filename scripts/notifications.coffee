@@ -68,7 +68,7 @@ module.exports = (robot) ->
     .header('Accept', 'application/vnd.urbanairship+json; version=3')
     .header('Content-Type', 'application/x-www-form-urlencoded')
     .header('Authorization', "Basic #{URBAN_AIRSHIP_AUTH}")
-    .post(noStoryPostData.split(PLATFORM_VAR).join('ios').split(PLATFORM_VAR).join('android').split(TITLE_VAR).join('this story has no id')) (err, res, body) ->
+    .post(noStoryPostData.split(PLATFORM_VAR).join('android').split(TITLE_VAR).join('this story has no id')) (err, res, body) ->
       msg.send "Sent"
 
   robot.respond /ios random notification/i, (msg) ->
@@ -77,7 +77,7 @@ module.exports = (robot) ->
     .header('Accept', 'application/vnd.urbanairship+json; version=3')
     .header('Content-Type', 'application/x-www-form-urlencoded')
     .header('Authorization', "Basic #{URBAN_AIRSHIP_AUTH}")
-    .post(iosPostData.split(PLATFORM_VAR).join('ios').split(ID_VAR).join(story_deets[0]).split(TITLE_VAR).join(story_deets[1])) (err, res, body) ->
+    .post(postData.split(PLATFORM_VAR).join('ios').split(ID_VAR).join(story_deets[0]).split(TITLE_VAR).join(story_deets[1])) (err, res, body) ->
       msg.send "Sent"
 
   robot.respond /ios notification (.*)/i, (msg) ->
@@ -88,7 +88,7 @@ module.exports = (robot) ->
     .header('Accept', 'application/vnd.urbanairship+json; version=3')
     .header('Content-Type', 'application/x-www-form-urlencoded')
     .header('Authorization', "Basic #{URBAN_AIRSHIP_AUTH}")
-    .post(iosPostData.split(ID_VAR).join(story_id).split(TITLE_VAR).join(title)) (err, res, body) ->
+    .post(postData.split(PLATFORM_VAR).join('ios').split(ID_VAR).join(story_id).split(TITLE_VAR).join(title)) (err, res, body) ->
       msg.send "Sent"
 
   robot.respond /ios blank notification/i, (msg) ->
