@@ -138,7 +138,7 @@ module.exports = (robot) ->
   'use strict'
   # Constants.
   STANDUP_MESSAGES = [
-    '*NEWS TEAM ASSEMBlE* https://www.youtube.com/watch?v=iXlskUxlI7E'
+    '*NEWS TEAM ASSEMBlE*'
   ]
 
   STANDUP_MESSAGE_SUFFIX = "\n http://appear.in/sittingdownisoverrated"
