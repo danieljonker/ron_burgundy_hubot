@@ -1,3 +1,8 @@
+# Description:
+#   Provides recipes based on search criteria
+#
+# Commands:
+#   hubot recipe (search string) - provides a random recipe based on the search string
 
 FOOD_TO_FORK_API_KEY = process.env.HUBOT_FOOD_TO_FORK_API_KEY
 FOOD_TO_FORK_URL = "http://food2fork.com/api/search?key=d875c0c6187cc9fadd3b4cdde6fae509&q=veg%20pasta"
