@@ -54,7 +54,7 @@ How to set environment variables will be specific to your operating system.
 Rather than recreate the various methods and best practices in achieving this,
 it's suggested that you search for a dedicated guide focused on your OS.
 
-## Custom environment variables required
+#### Custom environment variables required
 For the urban airship support you need to use replacing XXXX with the basic auth token from UA:
 export HUBOT_URBAN_AIRSHIP_AUTH=XXXX 
 
