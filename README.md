@@ -54,6 +54,18 @@ How to set environment variables will be specific to your operating system.
 Rather than recreate the various methods and best practices in achieving this,
 it's suggested that you search for a dedicated guide focused on your OS.
 
+#### Custom environment variables required
+For the urban airship support you need to use replacing XXXX with the basic auth token from UA.
+For the recipe search API with an api key from http://food2fork.com/about/api.
+For the custom google search you have to setup a custom google search engine.
+
+Example:
+
+    export HUBOT_FOOD_TO_FORK_API_KEY=XXXX 
+    export HUBOT_URBAN_AIRSHIP_AUTH=XXXX 
+    export HUBOT_GOOGLE_CSE_KEY=XXXX
+    
+
 ### Scripting
 
 An example script is included at `scripts/example.coffee`, so check it out to
