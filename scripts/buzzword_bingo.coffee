@@ -34,4 +34,4 @@ module.exports = (robot) ->
       buzzword = msg.random buzzwords
       if (buzzword not in bingo_card)
         bingo_card.push buzzword
-    msg.send bingo_card.toString()
+    msg.reply bingo_card.toString()
