@@ -39,7 +39,8 @@ module.exports = (robot) ->
     "Khaleel",
     "James",
     "Chris",
-    "Ryan"
+    "Ryan",
+    "Ceri"
   ]
 
   robot.respond /team member$/i, (msg) ->
