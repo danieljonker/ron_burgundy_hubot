@@ -21,18 +21,7 @@ postData = JSON.stringify({
         'type_id' : 1
         }
       }
-    },
-  'in_app' : {
-    'extra' : {
-      'id' : '<<story_id>>',
-      'type_id' : 1
-    },
-    'display' : {
-      'position' : 'top'
-    },
-    'display_type' : 'banner',
-    'alert': 'this is a notification'
-  }
+    }
   })
 
 noStoryPostData = JSON.stringify({
