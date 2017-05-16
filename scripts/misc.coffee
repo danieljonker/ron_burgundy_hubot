@@ -6,6 +6,9 @@ module.exports = (robot) ->
   robot.hear /.*(appium).*/i, (msg) ->
     msg.send msg.random crappium
 
+  robot.respond /pong/i, (msg) ->
+    msg.send 'PING'
+
 crappium = [
     ":poop:ium",
     "*CRAPPIUM*",
