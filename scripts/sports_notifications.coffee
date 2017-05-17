@@ -46,7 +46,7 @@ URBAN_AIRSHIP_AUTH = process.env.HUBOT_SPORTS_URBAN_AIRSHIP_AUTH
 
 module.exports = (robot) ->
   robot.respond /android random sports notification/i, (msg) ->
-    story_deets = msg.random STORY_IDS
+    story_deets = msg.random ARTICLE_IDS
     robot.http('https://go.urbanairship.com/api/push')
     .header('Accept', 'application/vnd.urbanairship+json; version=3')
     .header('Content-Type', 'application/x-www-form-urlencoded')
@@ -74,7 +74,7 @@ module.exports = (robot) ->
       msg.send "Sent"
 
   robot.respond /ios random sports notification/i, (msg) ->
-    story_deets = msg.random STORY_IDS
+    story_deets = msg.random ARTICLE_IDS
     robot.http('https://go.urbanairship.com/api/push')
     .header('Accept', 'application/vnd.urbanairship+json; version=3')
     .header('Content-Type', 'application/x-www-form-urlencoded')
