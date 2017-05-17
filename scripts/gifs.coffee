@@ -15,8 +15,8 @@ module.exports = (robot) ->
         gifs = jsonResponse.data.url
         msg.send "#{gifs}"
 
-  robot.respond /(.*) gif/i, (msg) ->
-    data = msg.match[0]
+  robot.respond /gif (.*)/i, (msg) ->
+    data = msg.match[1]
     robot.http("http://api.giphy.com/v1/gifs/search?q=#{data}&api_key=#{GIPHY_API_KEY}")
     .header('Content-Type', 'application/x-www-form-urlencoded')
     .get() (err, res, body) ->
