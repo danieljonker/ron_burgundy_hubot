@@ -17,7 +17,7 @@ postData = JSON.stringify({
     'alert' : '<<title>>',
     '<<platform>>' : {
       'extra' : {
-        'id' : '<<story_id>>',
+        'article_id' : '<<article_id>>',
         'type_id' : 1
         }
       }
@@ -34,9 +34,9 @@ noStoryPostData = JSON.stringify({
 
 PLATFORM_VAR = '<<platform>>'
 TITLE_VAR = '<<title>>'
-ID_VAR = '<<story_id>>'
+ID_VAR = '<<article_id>>'
 # Todo: change the below array items
-STORY_IDS = [
+ARTICLE_IDS = [
   ['9925882', 'heard u like shoes brah'],
   ['9904673', 'Brexit deal must clarify Ireland border poll commitment'],
   ['9904360', 'Vauxhall and Opel sold to Peugeot owner PSA in £1.9bn']
@@ -56,13 +56,13 @@ module.exports = (robot) ->
 
   robot.respond /android sports notification (.*)/i, (msg) ->
     data = msg.match[1].split(" ")
-    story_id = data[0]
+    article_id = data[0]
     title = if (data.length > 1) then data.slice(1).join(" ") else "Message"
     robot.http('https://go.urbanairship.com/api/push')
     .header('Accept', 'application/vnd.urbanairship+json; version=3')
     .header('Content-Type', 'application/x-www-form-urlencoded')
     .header('Authorization', "Basic #{URBAN_AIRSHIP_AUTH}")
-    .post(postData.split(PLATFORM_VAR).join('android').split(ID_VAR).join(story_id).split(TITLE_VAR).join(title)) (err, res, body) ->
+    .post(postData.split(PLATFORM_VAR).join('android').split(ID_VAR).join(article_id).split(TITLE_VAR).join(title)) (err, res, body) ->
       msg.send "Sent"
 
   robot.respond /android blank sports notification/i, (msg) ->
@@ -84,13 +84,13 @@ module.exports = (robot) ->
 
   robot.respond /ios sports notification (.*)/i, (msg) ->
     data = msg.match[1].split(" ")
-    story_id = data[0]
+    article_id = data[0]
     title = if (data.length > 1) then data.slice(1).join(" ") else "Message"
     robot.http('https://go.urbanairship.com/api/push')
     .header('Accept', 'application/vnd.urbanairship+json; version=3')
     .header('Content-Type', 'application/x-www-form-urlencoded')
     .header('Authorization', "Basic #{URBAN_AIRSHIP_AUTH}")
-    .post(postData.split(PLATFORM_VAR).join('ios').split(ID_VAR).join(story_id).split(TITLE_VAR).join(title)) (err, res, body) ->
+    .post(postData.split(PLATFORM_VAR).join('ios').split(ID_VAR).join(article_id).split(TITLE_VAR).join(title)) (err, res, body) ->
       msg.send "Sent"
 
   robot.respond /ios blank sports notification/i, (msg) ->
@@ -107,6 +107,6 @@ module.exports = (robot) ->
     message.push 'Here\'s how:'
     message.push ''
     message.push robot.name + ' android random sports notification - I\'ll send a random notification from a hard coded list.'
-    message.push robot.name + ' android sports notification (story_id) - I\'ll send a notification of the provided story_id (replace (story_id) including brackets).'
-    message.push robot.name + ' android sports notification (story_id) (message) - same as above, but with a custom notification message.'
+    message.push robot.name + ' android sports notification (article_id) - I\'ll send a notification of the provided story_id (replace (article_id) including brackets).'
+    message.push robot.name + ' android sports notification (article_id) (message) - same as above, but with a custom notification message.'
     msg.send message.join('\n')
