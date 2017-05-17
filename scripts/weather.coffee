@@ -18,4 +18,7 @@ module.exports = (robot) ->
         currentTemp = jsonResponse.main.temp
         minTemp = jsonResponse.main.temp_min
         maxTemp = jsonResponse.main.temp_max
-        msg.send "The Weather forecast for today is: #{description} & the current temp is: #{currentTemp}°C \n min temp #{minTemp}°C \n max temp #{maxTemp}°C"
+        switch description
+          when "clear sky" then ":sunny:"
+          when "broken clouds" then images =":cloud:"
+        msg.send "The Weather forecast for today is: #{description} #{images} & the current temp is: #{currentTemp}°C \n min temp #{minTemp}°C \n max temp #{maxTemp}°C"
