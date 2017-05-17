@@ -14,5 +14,8 @@ module.exports = (robot) ->
     .header('Content-Type', 'application/x-www-form-urlencoded')
     .get() (err, res, body) ->
         jsonResponse = JSON.parse body
-        description = jsonResponse.weather[0].description + "\n" + "& the current temp is: " + jsonResponse.main.temp
-        msg.send "The Weather forecast is: #{description}"
+        description = jsonResponse.weather[0].description
+        currentTemp = jsonResponse.main.temp
+        minTemp = jsonResponse.main.temp_min
+        maxTemp = jsonResponse.main.temp_max
+        msg.send "The Weather forecast for today is: #{description} & the current temp is: #{currentTemp}°C \n min temp #{minTemp}°C \n max temp #{maxTemp}°C"
