@@ -17,7 +17,7 @@ postData = JSON.stringify({
     'alert' : '<<title>>',
     '<<platform>>' : {
       'extra' : {
-        'article_id' : '<<article_id>>',
+        'id' : '<<article_id>>',
         'type_id' : 1
         }
       }
