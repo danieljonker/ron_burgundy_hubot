@@ -37,7 +37,7 @@ TITLE_VAR = '<<title>>'
 ID_VAR = '<<article_id>>'
 # Todo: change the below array items
 ARTICLE_IDS = [
-  ['9925882', 'heard u like shoes brah'],
+  ['3473018', 'heard u like shoes brah'],
   ['9904673', 'Brexit deal must clarify Ireland border poll commitment'],
   ['9904360', 'Vauxhall and Opel sold to Peugeot owner PSA in £1.9bn']
 ]
