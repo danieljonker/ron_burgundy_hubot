@@ -44,7 +44,7 @@ ARTICLE_IDS = [
   ['9913873', 'probably some footy news']
 ]
 
-URBAN_AIRSHIP_AUTH = process.env.HUBOT_SPORTS_URBAN_AIRSHIP_AUTH
+URBAN_AIRSHIP_AUTH = process.env.HUBOT_SCORECENTRE_URBAN_AIRSHIP_AUTH
 
 module.exports = (robot) ->
   robot.respond /android random scorecentre notification/i, (msg) ->
